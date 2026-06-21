@@ -1,0 +1,167 @@
+/* Base Variables & Reset */
+:root {
+  --bg-gradient: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  --surface: #ffffff;
+  --text-primary: #111827; /* Very high contrast for VA compliance */
+  --text-secondary: #374151;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --radius: 12px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  /* VA Requirement: Font size 14px or larger */
+  font-size: 16px; 
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 
+  VA Requirement: 
+  - Text and background colors that meet minimum WCAG contrast requirements of at least 4.5:1. 
+  - No narrow column widths. 
+*/
+.container {
+  width: 100%;
+  /* Ensures column isn't narrow, but maintains readability */
+  max-width: 800px; 
+  margin: 0 auto;
+  padding: 2rem;
+  flex: 1;
+}
+
+/* Header & Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #111827, #374151);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  margin-bottom: 3rem;
+}
+
+/* Buttons Container */
+.button-group {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Premium Button Styling */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--primary);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--shadow);
+  border: 2px solid transparent;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn:focus-visible {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+/* Legal Document Styling (VA Compliant) */
+.document-surface {
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.document-surface h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 1rem;
+}
+
+.document-surface h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.document-surface p {
+  /* VA Requirement: No long, unbroken paragraphs. */
+  margin-bottom: 1.25rem;
+}
+
+.document-surface ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.document-surface li {
+  margin-bottom: 0.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .document-surface {
+    padding: 1.5rem;
+  }
+  .button-group {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+  }
+}
